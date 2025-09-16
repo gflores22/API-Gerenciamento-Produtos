@@ -28,10 +28,11 @@ public class ProdutoMapper {
         );
     }
 
-    public void updateEntity(Produto produto, ProdutoRequestDTO dto) {
+    public Produto updateEntity(Produto produto, ProdutoRequestDTO dto) {
         produto.setNome(dto.nome());
         produto.setDescricao(dto.descricao());
         produto.setPreco(dto.preco());
         produto.setQuantidade(dto.quantidade());
+        return produto;
     }
 }
