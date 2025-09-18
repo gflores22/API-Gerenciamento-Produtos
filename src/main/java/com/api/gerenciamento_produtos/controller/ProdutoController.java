@@ -33,7 +33,7 @@ public class ProdutoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProdutoResponseDTO> buscarProdutoPorId(@RequestParam UUID id) {
+    public ResponseEntity<ProdutoResponseDTO> buscarProdutoPorId(@PathVariable UUID id) {
         ProdutoResponseDTO produto = mapper.toDTO(service.buscarProdutoPorId(id));
         return ResponseEntity.ok(produto);
     }
@@ -47,13 +47,13 @@ public class ProdutoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ProdutoResponseDTO> atualizarProduto(@RequestParam UUID id, @RequestBody ProdutoRequestDTO requestDTO) {
+    public ResponseEntity<ProdutoResponseDTO> atualizarProduto(@PathVariable UUID id, @RequestBody ProdutoRequestDTO requestDTO) {
         ProdutoResponseDTO produtoAtualizado = mapper.toDTO(service.atualizarProduto(id, requestDTO));
         return ResponseEntity.ok(produtoAtualizado);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarProduto(@RequestParam UUID id) {
+    public ResponseEntity<Void> deletarProduto(@PathVariable UUID id) {
         service.deletarProduto(id);
         return ResponseEntity.noContent().build();
     }
