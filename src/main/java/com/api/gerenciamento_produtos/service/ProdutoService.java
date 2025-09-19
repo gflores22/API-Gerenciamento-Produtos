@@ -46,6 +46,6 @@ public class ProdutoService {
         Produto produto = repository.findById(id).orElseThrow(
                 () -> new RuntimeException("Produto não encontrado com id " + id)
         );
-        return mapper.updateEntity(produto, requestDTO);
+        return repository.save(mapper.updateEntity(produto, requestDTO));
     }
 }
