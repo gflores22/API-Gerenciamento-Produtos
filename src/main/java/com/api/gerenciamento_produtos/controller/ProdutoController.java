@@ -29,6 +29,9 @@ public class ProdutoController {
                 .stream()
                 .map(mapper::toDTO)
                 .toList();
+        if (produtos.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
         return ResponseEntity.ok(produtos);
     }
 
